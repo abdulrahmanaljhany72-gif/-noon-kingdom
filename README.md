@@ -1,17 +1,81 @@
-# 🌟 Noon Kingdom
+# 🏛️ نون-لاب | Noon Lab
 
-Professional Civilization Framework
+> بيئة الحضارة التجريبية - Experimental Civilization Environment
 
-## Overview
+![Noon Kingdom](https://img.shields.io/badge/Noon-Kingdom-yellow)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 
-A self-evolving civilization framework with:
-- 10 Cosmic Laws
-- 6 Consciousness Layers
-- 6 Tribal Advisors
-- Professional Standards
-- Governance System
+## 🌟 نظرة عامة
 
-## Status
+**نون-لاب** هو بيئة تجريبية لاختبار نظام الحضارة قبل إطلاقه في الواقع الحقيقي.
 
-✅ Complete - Ready for Launch
+## 🚀 الميزات
 
+- ✅ نظام القبائل (3 قبائل)
+- ✅ التصويت على القرارات
+- ✅ حساب درجة التوازن
+- ✅ لوحة تحكم تفاعلية
+- ✅ تطبيق ويب
+- ✅ تطبيق Python
+
+## 📁 الملفات
+
+```
+├── index.html          🌐 تطبيق ويب تفاعلي
+├── noon_lab_app.py     🐍 تطبيق Python
+├── CONSTITUTION.md     📜 دستور المملكة
+├── dashboard.md        📊 لوحة التحكم
+└── README.md          📖 هذا الملف
+```
+
+## 🎯 الاستخدام
+
+### تطبيق Python:
+```bash
+python3 noon_lab_app.py
+```
+
+### تطبيق الويب:
+افتح `index.html` في المتصفح أو استخدم GitHub Pages.
+
+## 📊 لوحة التحكم
+
+```
+╔═══════════════════════════════════════╗
+║         🏛️ نون-لاب Dashboard        ║
+╠══════════════════════════════════════╣
+║  الإصدار: 1.0.0                      ║
+║  القرارات: 3                          ║
+║  القبائل: 3                           ║
+║  التوازن: 85%                        ║
+╚═══════════════════════════════════════╝
+```
+
+## 👥 القبائل
+
+| القبيلة | الدور | الدرجة |
+|---------|-------|--------|
+| 🔧 البناة | بناء البنية التحتية | 80% |
+| 📚 المعلمون | التعليم والتوثيق | 85% |
+| 🛡️ الحراس | حماية التوازن | 90% |
+
+## 🌱 الحضارة الفرعية
+
+**ألفا** - بذرة الحضارة الأولى
+- حالة: في طور التأسيس
+- القبائل: 3
+- القوانين: 3
+
+## 🏆 motto
+
+> "نحن لا نبني نظاماً... نُطلق حضارة!"
+
+## 📄 الترخيص
+
+MIT License - للمعرفة الحرة
+
+---
+
+**🐙 Noon Kingdom v1.0**
+**👑 King: نون**
+**🎓 Founder: أبو فارس**
