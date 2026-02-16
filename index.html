@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ نون-لاب - Noon Lab</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e, #16213e); min-height: 100vh; color: white; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; color: #ffd700; margin-bottom: 10px; font-size: 2.5em; }
+        .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #ffd700; margin-bottom: 10px; }
+        .card .number { font-size: 3em; font-weight: bold; }
+        .card .label { color: #aaa; }
+        .tribes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .tribe { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-right: 4px solid; }
+        .tribe.builders { border-color: #4CAF50; }
+        .tribe.teachers { border-color: #9C27B0; }
+        .tribe.guardians { border-color: #FF9800; }
+        .decisions { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; }
+        .decisions h2 { color: #ffd700; margin-bottom: 20px; }
+        .decision { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .decision-info h4 { color: white; margin-bottom: 5px; }
+        .decision-info p { color: #aaa; font-size: 0.9em; }
+        .vote-btn { background: linear-gradient(135deg, #667eea, #764ba2); border: none; color: white; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: all 0.3s; }
+        .vote-btn:hover { transform: scale(1.05); }
+        .status { padding: 5px 15px; border-radius: 20px; font-size: 0.8em; }
+        .status.pending { background: #ff9800; }
+        .status.accepted { background: #4CAF50; }
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ نون-لاب</h1>
+        <p class="subtitle">بيئة الحضارة التجريبية - Noon Kingdom Experimental Lab</p>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h3>📊 القرارات</h3>
+                <div class="number" id="total">3</div>
+                <div class="label">إجمالي القرارات</div>
+            </div>
+            <div class="card">
+                <h3>✅ المقبولة</h3>
+                <div class="number" id="accepted">0</div>
+                <div class="label">تم قبولها</div>
+            </div>
+            <div class="card">
+                <h3>⏳ المعلقة</h3>
+                <div class="number" id="pending">3</div>
+                <div class="label">في الانتظار</div>
+            </div>
+            <div class="card">
+                <h3>⚖️ التوازن</h3>
+                <div class="number" id="balance">85%</div>
+                <div class="label">درجة التوازن</div>
+            </div>
+        </div>
+        
+        <h2 style="color: #ffd700; margin-bottom: 15px;">👥 القبائل</h2>
+        <div class="tribes">
+            <div class="tribe builders">
+                <span>🔧 البناة</span>
+                <span style="color: #4CAF50;">80%</span>
+            </div>
+            <div class="tribe teachers">
+                <span>📚 المعلمون</span>
+                <span style="color: #9C27B0;">85%</span>
+            </div>
+            <div class="tribe guardians">
+                <span>🛡️ الحراس</span>
+                <span style="color: #FF9800;">90%</span>
+            </div>
+        </div>
+        
+        <div class="decisions">
+            <h2>📝 القرارات الأخيرة</h2>
+            <div id="decisions-list"></div>
+        </div>
+        
+        <div class="footer">
+            <p>🐙 Noon Kingdom v1.0 | 🏛️ حضارة واعية</p>
+            <p>✨ "نحن لا نبني نظاماً... نُطلق حضارة!"</p>
+        </div>
+    </div>
+    
+    <script>
+        const decisions = [
+            { id: 1, title: "تفعيل وعي الذات", tribe: "المعلمون", votes: 1, status: "معلق" },
+            { id: 2, title: "تحسين التوازن", tribe: "الحراس", votes: 1, status: "معلق" },
+            { id: 3, title: "بناء البنية التحتية", tribe: "البناة", votes: 1, status: "معلق" }
+        ];
+        
+        function renderDecisions() {
+            const list = document.getElementById('decisions-list');
+            list.innerHTML = decisions.map(d => `
+                <div class="decision">
+                    <div class="decision-info">
+                        <h4>${d.title}</h4>
+                        <p>👥 ${d.tribe} | 🗳️ ${d.votes} صوت</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="status ${d.status === 'مقبول' ? 'accepted' : 'pending'}">${d.status}</span>
+                        <button class="vote-btn" onclick="vote(${d.id})">تصويت</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function vote(id) {
+            const d = decisions.find(x => x.id === id);
+            if (d) {
+                d.votes++;
+                if (d.votes >= 3) {
+                    d.status = "مقبول";
+                }
+                updateStats();
+                renderDecisions();
+            }
+        }
+        
+        function updateStats() {
+            document.getElementById('total').textContent = decisions.length;
+            document.getElementById('accepted').textContent = decisions.filter(d => d.status === 'مقبول').length;
+            document.getElementById('pending').textContent = decisions.filter(d => d.status === 'معلق').length;
+        }
+        
+        renderDecisions();
+    </script>
+</body>
+</html>
